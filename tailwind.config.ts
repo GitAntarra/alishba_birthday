@@ -11,6 +11,8 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        melodyPink: "#F8A8C9",
+        melodyWhite: "#FFF5F7",
       },
     },
   },

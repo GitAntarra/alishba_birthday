@@ -12,13 +12,15 @@ export default async function handler(
     return res.status(400).json({ error: "Invalid guest ID" });
   }
 
+  const nm: string = name.toString();
+
   try {
     if (req.method === "GET") {
-      const guest = await prisma.guests.findFirst({ where: { name } });
+      const guest = await prisma.guests.findFirst({ where: { name: nm } });
       if (!guest) {
         const post = await prisma.guests.create({
           data: {
-            name: name,
+            name: nm,
           },
         });
         1;

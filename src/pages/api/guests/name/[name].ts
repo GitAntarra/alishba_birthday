@@ -15,12 +15,14 @@ export default async function handler(
   const nm: string = name.toString();
 
   try {
-    if (req.method === "GET") {
+    if (req.method === "POST") {
+      const { gender } = req.body
       const guest = await prisma.guests.findFirst({ where: { name: nm } });
       if (!guest) {
         const post = await prisma.guests.create({
           data: {
             name: nm,
+            gender
           },
         });
         1;

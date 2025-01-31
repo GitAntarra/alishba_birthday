@@ -9,6 +9,7 @@ import TimeAgoComponent from "../components/TimeAgo"
 import { BiMessageAltDetail } from "react-icons/bi"
 import { IoMdSend } from "react-icons/io"
 import Image from "next/image"
+import LoadingPage from "../components/LoadingPage"
 
 const CommentPage = () => {
     const dispatch = useAppDispatch()
@@ -51,6 +52,7 @@ const CommentPage = () => {
                     <button type="submit" className=" bg-indigo-400 rounded-lgpy-1 text-white w-10 flex justify-center items-center rounded-xl"><IoMdSend /></button>
                 </form>
             </div>
+            <LoadingPage loading={loading} />
         </div>
     )
 }

@@ -20,6 +20,12 @@ const images: ImageData[] = [
   {
     src: '/gallery/image-3.jpeg',
   },
+  {
+    src: '/gallery/image-4.jpeg',
+  },
+  {
+    src: '/gallery/image-5.jpeg',
+  },
 ];
 
 export default function GalleryPage(): JSX.Element {

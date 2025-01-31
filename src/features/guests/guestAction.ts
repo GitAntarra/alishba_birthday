@@ -42,12 +42,12 @@ export const fetchAllPost = createAsyncThunk(
 
 export const fetchGuestByName = createAsyncThunk(
   "guest/fetchByname",
-  async (name: string, { dispatch }) => {
+  async ({name, gender}:{name: string, gender: 'boy' | 'girl'}, { dispatch }) => {
     const upName = name.toUpperCase();
     try {
       dispatch(setGuestLoad(true));
-      const { data }: { data: Guest } = await fetchApi.get(
-        `/api/guests/name/${upName}`
+      const { data }: { data: Guest } = await fetchApi.post(
+        `/api/guests/name/${upName}`, {gender}
       );
       console.log({ data });
       dispatch(setGuest(data));

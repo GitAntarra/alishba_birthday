@@ -18,7 +18,7 @@ const MusicComponent = () => {
                     loop={true}
                     mute={isMuted}
                     // onLoad={true}
-                    onPlay={true}
+                    // onPlay={true}
                     // onEnd={true}
                     // volume={this.state.volume}
                     // ref={(ref) => (this.player = ref)}

@@ -15,11 +15,11 @@ const MusicComponent = () => {
         <ReactHowler
                     src={"/music/dj-catnip-song.mp3"}
                     playing={true}
-                    onLoad={true}
-                    onPlay={true}
-                    onEnd={true}
                     loop={true}
                     mute={isMuted}
+                    // onLoad={true}
+                    // onPlay={true}
+                    // onEnd={true}
                     // volume={this.state.volume}
                     // ref={(ref) => (this.player = ref)}
                 />

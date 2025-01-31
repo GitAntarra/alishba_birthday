@@ -1,7 +1,7 @@
 import { Guest } from "../guests/guestInterface";
 
 export interface Comment {
-  id: number;
+  id: string;
   guestId: number;
   message: string;
   createdAt: string;

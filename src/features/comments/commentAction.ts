@@ -1,6 +1,6 @@
 // src/features/user/actions.ts
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { setComment, setCommentErr, setCommentLoad, setComments } from "./commentSlice";
+import { pushComment, setComment, setCommentErr, setCommentLoad, setComments } from "./commentSlice";
 import { AddCommentDto, Comment } from "./commentInterface";
 import { fetchApi } from "@/_libs/fetchApi";
 
@@ -66,9 +66,9 @@ export const addComment = createAsyncThunk(
     try {
       dispatch(setCommentLoad(true));
       const { data }: { data: Comment } = await fetchApi.post(
-        `/api/guests`, payload
+        `/api/comments`, payload
       );
-      dispatch(setComment(data));
+      dispatch(pushComment(data));
     } catch (error: any) {
       dispatch(setCommentErr(error.message));
     } finally {

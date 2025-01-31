@@ -17,13 +17,14 @@ model Guests {
   id        Int        @id @default(autoincrement())
   name      String     @unique
   attend    Attend     @default(nothing)
+  gender    Gender     @default(girl)
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
   Comments  Comments[]
 }
 
 model Comments {
-  id        Int      @id @default(autoincrement())
+  id        String      @id @default(uuid())
   guestId   Int
   guest     Guests   @relation(fields: [guestId], references: [id])
   message   String
@@ -34,4 +35,9 @@ enum Attend {
   nothing
   attend
   ignore
+}
+
+enum Gender {
+  girl
+  boy
 }

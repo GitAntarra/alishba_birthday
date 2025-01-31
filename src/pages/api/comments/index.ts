@@ -10,23 +10,31 @@ export default async function handler(
   }
 
   if (req.method === "POST") {
-    const { userId, message } = req.body;
-
+    const { guestId, message } = req.body;
     const guest = await prisma.guests.findUnique({
-      where: { id: userId },
+      where: { id: guestId },
     });
 
     if (!guest) {
       return res.status(400).json({ error: "Invalid Guest" });
     }
-    const post = await prisma.comments.create({
-      data: {
-        guestId: guest.id,
-        message: message,
-      }
-    });
 
-    return res.status(201).json(post);
+    try {
+      const comment = await prisma.comments.create({
+        data: {
+          guestId,
+          message,
+        },
+        include: {
+          guest: true
+        }
+      });    
+  
+      return res.status(201).json(comment);
+    } catch (error) {
+      return res.status(400).json({ error: error });
+      
+    }
   } else {
     try {
       const comments = await prisma.comments.findMany({ orderBy: { id: "desc" },
@@ -38,4 +46,9 @@ export default async function handler(
       res.status(500).json({ error: "Failed to fetch comments", details: error });
     }
   }
+}
+
+
+function generateRandomKey(length: number = 10): string {
+  return Math.random().toString(36).substring(2, 2 + length);
 }

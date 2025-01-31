@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import BtnButton from "./components/BtnButton";
 import { ReduxProvider } from "@/redux/ReduxProvider";
+import MusicComponent from "./components/Music";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,6 +33,7 @@ export default function RootLayout({
         <ReduxProvider>
           {children}
           <BtnButton />
+          <MusicComponent />
         </ReduxProvider>
       </body>
     </html>

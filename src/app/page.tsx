@@ -53,10 +53,10 @@ export default function App() {
     }
   }, [])
 
+  
   if (!skeleton) {
     return <LoadingPage loading={true} />
   }
-
 
   return (
 
@@ -107,7 +107,7 @@ export default function App() {
       </div>
       <div className={`${sourGummy.className} text-3xl font-bold text-pink-600 flex flex-col justify-center items-center`}>
         Antarra Alishba Nidra
-        <p className='text-base text-indigo-600'>Lest High Five</p>
+        <p className='text-base text-indigo-600'>Let's High Five</p>
       </div>
       <h1 className="text-2xl font-bold pt-4">🎉 Birthday Party 🎉</h1>
       <p className="text-md mt-1">📅 Date: February 05, 2025</p>

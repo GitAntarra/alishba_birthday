@@ -47,6 +47,17 @@ export default function GalleryPage(): JSX.Element {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
   };
 
+  // Handle mouse over event
+  const handleMouseOver = (): void => {
+    setIsHovered(true);
+  };
+
+  // Handle mouse leave event
+  const handleMouseLeave = (): void => {
+    setIsHovered(false);
+  };
+
+  
   // useEffect hook to handle automatic slide transition
   useEffect(() => {
     // Start interval for automatic slide change if not hovered
@@ -62,16 +73,6 @@ export default function GalleryPage(): JSX.Element {
     }
   }, [isHovered]);
 
-  // Handle mouse over event
-  const handleMouseOver = (): void => {
-    setIsHovered(true);
-  };
-
-  // Handle mouse leave event
-  const handleMouseLeave = (): void => {
-    setIsHovered(false);
-  };
-
   return (
     <div className="relative w-full mx-auto mt-4">
       <div
@@ -82,8 +83,7 @@ export default function GalleryPage(): JSX.Element {
         <Image
           src={images[currentIndex].src}
           alt={`Slider Image ${currentIndex + 1}`}
-          layout="fill"
-          objectFit="cover"
+          fill
           className="rounded-xl transition-all duration-500 ease-in-out cursor-pointer"
         />
       </div>

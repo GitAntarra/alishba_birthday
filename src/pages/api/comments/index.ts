@@ -27,7 +27,7 @@ export default async function handler(
         },
         include: {
           guest: true
-        }
+        },
       });    
   
       return res.status(201).json(comment);
@@ -37,7 +37,7 @@ export default async function handler(
     }
   } else {
     try {
-      const comments = await prisma.comments.findMany({ orderBy: { id: "desc" },
+      const comments = await prisma.comments.findMany({ orderBy: { createdAt: 'asc' },
         include: {
           guest: true
         } });
